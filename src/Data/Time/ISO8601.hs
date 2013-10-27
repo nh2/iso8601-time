@@ -22,6 +22,8 @@ formatISO8601 t = formatTime defaultTimeLocale "%FT%T%QZ" t
 
 
 -- | Pads an ISO 8601 date with trailing zeros, but lacking the trailing Z.
+--
+-- This is needed because `formatTime` with "%Q" does not create trailing zeros.
 formatPadded :: UTCTime -> String
 formatPadded t
   | length str == 19 = str ++ ".000000000000"
