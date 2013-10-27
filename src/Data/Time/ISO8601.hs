@@ -17,8 +17,6 @@ import System.Locale (defaultTimeLocale)
 -- | Formats a time in ISO 8601, with up to 12 second decimals.
 --
 -- This is the `formatTime` format @%FT%T%Q@ == @%%Y-%m-%dT%%H:%M:%S%Q@.
---
--- For
 formatISO8601 :: UTCTime -> String
 formatISO8601 t = formatTime defaultTimeLocale "%FT%T%QZ" t
 
