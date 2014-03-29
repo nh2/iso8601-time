@@ -12,6 +12,7 @@ module Data.Time.ISO8601
 import Data.Time.Clock (UTCTime)
 import Data.Time.Format (formatTime, parseTime)
 import System.Locale (defaultTimeLocale)
+import Control.Applicative ((<|>))
 
 
 -- | Formats a time in ISO 8601, with up to 12 second decimals.
@@ -73,4 +74,5 @@ formatISO8601Javascript = formatISO8601Millis
 
 -- | Parses an ISO 8601 string.
 parseISO8601 :: String -> Maybe UTCTime
-parseISO8601 t = parseTime defaultTimeLocale "%FT%T%QZ" t
+parseISO8601 t = parseTime defaultTimeLocale "%FT%T%QZ" t <|>
+                 parseTime defaultTimeLocale "%FT%T%Q%z" t
