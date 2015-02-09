@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 module Data.Time.ISO8601
   ( formatISO8601
   , formatISO8601Millis
@@ -11,7 +12,11 @@ module Data.Time.ISO8601
 
 import Data.Time.Clock (UTCTime)
 import Data.Time.Format (formatTime, parseTime)
+#if MIN_VERSION_time(1,5,0)
+import Data.Time.Format (defaultTimeLocale)
+#else
 import System.Locale (defaultTimeLocale)
+#endif
 import Control.Applicative ((<|>))
 
 
