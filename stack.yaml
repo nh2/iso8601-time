@@ -1,0 +1,4 @@
+resolver: lts-3.1
+flags:
+  iso8601-time:
+    new-time: true
