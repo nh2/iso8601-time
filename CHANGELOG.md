@@ -1,3 +1,9 @@
+0.1.4
+-----
+
+* Bumped version again since due to accidental version bump on Hackage
+
+
 0.1.3
 -----
 
