@@ -11,10 +11,11 @@ module Data.Time.ISO8601
 
 
 import Data.Time.Clock (UTCTime)
-import Data.Time.Format (formatTime, parseTime)
+import Data.Time.Format (formatTime)
 #if MIN_VERSION_time(1,5,0)
-import Data.Time.Format (defaultTimeLocale)
+import Data.Time.Format (defaultTimeLocale, parseTimeM)
 #else
+import Data.Time.Format (parseTime)
 import System.Locale (defaultTimeLocale)
 #endif
 import Control.Applicative ((<|>))
@@ -78,6 +79,14 @@ formatISO8601Javascript = formatISO8601Millis
 
 
 -- | Parses an ISO 8601 string.
+--
+-- Leading and trailing whitespace is accepted. See `parseTimeM` from the
+-- `time` package for more details.
 parseISO8601 :: String -> Maybe UTCTime
+#if MIN_VERSION_time(1,5,0)
+parseISO8601 t = parseTimeM True defaultTimeLocale "%FT%T%QZ" t <|>
+                 parseTimeM True defaultTimeLocale "%FT%T%Q%z" t
+#else
 parseISO8601 t = parseTime defaultTimeLocale "%FT%T%QZ" t <|>
                  parseTime defaultTimeLocale "%FT%T%Q%z" t
+#endif
