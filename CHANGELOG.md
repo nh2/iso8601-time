@@ -1,3 +1,9 @@
+0.1.3
+-----
+
+* Fixed warnings when compiling with time-1.5
+
+
 0.1.2
 -----
 
