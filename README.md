@@ -5,3 +5,7 @@ iso8601-time
 
 Conversion functions between Haskell time types and the [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format,
 which is often used for printing times, e.g. JavaScript's `new Date().toISOString()`.
+
+## License
+
+[MIT license](https://opensource.org/licenses/MIT)
