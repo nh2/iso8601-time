@@ -1,6 +1,7 @@
 {-# LANGUAGE CPP #-}
 module Data.Time.ISO8601
   ( formatISO8601
+  , formatISO8601Seconds
   , formatISO8601Millis
   , formatISO8601Micros
   , formatISO8601Nanos
@@ -37,6 +38,14 @@ formatPadded t
   | otherwise        = str ++ "000000000000"
   where
     str = formatTime defaultTimeLocale "%FT%T%Q" t
+
+
+-- | Formats a time in ISO 8601 with up to second precision
+-- The format is precisely:
+--
+-- >YYYY-MM-DDTHH:mm:ssZ
+formatISO8601Seconds :: UTCTime -> String
+formatISO8601Seconds t = formatTime defaultTimeLocale "%FT%TZ" t
 
 
 -- | Formats a time in ISO 8601 with up to millisecond precision and trailing zeros.
